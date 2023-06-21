@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import NavBar from '../components/navBar';
+import callContext from '../context/context';
 
 const CallPage = () => {
     const [title, setTitle] = useState('');
     const [comment, setComment] = useState('');
     const [status, setStatus] = useState('');
     const [priority, setPriority] = useState('');
+    const { user, setUser } = useContext(callContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,6 +20,7 @@ const CallPage = () => {
 
     return (
       <div>
+        <NavBar user={ user.name }/>
         <div className='h1'>
           <h1>BEM VINDO AO CALL OPENING</h1>
         </div>

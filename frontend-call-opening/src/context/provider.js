@@ -3,18 +3,21 @@ import PropTypes from 'prop-types';
 import callContext from './context';
 
 function CallProvider({ children }) {
-    const [user, setUser] = useState({});
-    const contextValue = useMemo(() => ({
-        user,
-        setUser,
-   }), [user]);
+  const [user, setUser] = useState({});
+  const contextValue = useMemo(() => ({
+    user,
+    setUser,
+  }), [user, setUser]);
 
-   return (
-    <callContext.Provider value= { contextValue } />
-   );
-
+  return (
+    <callContext.Provider value={contextValue}>
+      {children}
+    </callContext.Provider>
+  );
 }
-   CallProvider.prototype = {
-    children: PropTypes.node.isRequired,
-   };
+
+CallProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 export default CallProvider;
