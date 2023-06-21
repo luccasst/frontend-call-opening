@@ -14,7 +14,7 @@ function NavBar() {
         <h3
         className="user"
         >
-            { user.name }
+           Seja bem-vindo, { user.name.split(' ')[0] }
         </h3>
         </nav>
     )
