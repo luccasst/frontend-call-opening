@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './navBarStyle.css';
 import { useNavigate } from 'react-router-dom';
 
 function NavBar() {
@@ -10,11 +11,17 @@ function NavBar() {
       }, [setUser]);
 
     return (
-        <nav>
-        <h3
+        <nav className="navegation-body">
+            <button className="chamados">
+                MEUS CHAMADOS
+            </button>
+            <h3
         className="user"
         >
            Seja bem-vindo, { user.name.split(' ')[0] }
+           <span role="img" aria-label="Emoji Feliz">
+          🙂
+        </span>
         </h3>
         </nav>
     )
