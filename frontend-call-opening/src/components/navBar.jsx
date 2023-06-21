@@ -18,7 +18,7 @@ function NavBar() {
             <h3
         className="user"
         >
-           Seja bem-vindo, { user.name.split(' ')[0] }
+           Seja bem-vindo, {user && user.name && user.name.split(' ')[0] }
            <span role="img" aria-label="Emoji Feliz">
           🙂
         </span>
