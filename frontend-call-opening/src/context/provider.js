@@ -1,18 +1,24 @@
 import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import callContext from './context';
+import {CallContext} from './context';
 
 function CallProvider({ children }) {
   const [user, setUser] = useState({});
+  const [calls, setCalls] = useState([]);
   const contextValue = useMemo(() => ({
     user,
     setUser,
-  }), [user, setUser]);
+    calls,
+    setCalls
+  }), [user,
+    setUser,
+    calls,
+    setCalls]);
 
   return (
-    <callContext.Provider value={contextValue}>
+    <CallContext.Provider value={contextValue}>
       {children}
-    </callContext.Provider>
+    </CallContext.Provider>
   );
 }
 

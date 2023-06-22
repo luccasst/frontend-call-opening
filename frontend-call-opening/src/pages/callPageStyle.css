@@ -5,7 +5,7 @@
     height: 20vh;
     background: linear-gradient(to right, #FF416C, #FF4B2B);
     color: #fff;
-    max-width: 50%;
+    max-width: 30%;
     margin: 30px auto 0;
     border-radius: 20px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
@@ -16,6 +16,36 @@
     animation: pulse 2s infinite;
   }
   
+  .getCalls {
+    display: flex;
+    justify-content: center;
+    margin: 100px;
+  }
+  
+  .column {
+    flex: 1;
+    margin-right: 0px;
+  }
+  
+  .column:last-child {
+    margin-right: 0;
+  }
+  
+  .callItem {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .callItem h3,
+  .callItem p {
+    text-align: center;
+    margin: 0;
+    padding: 5px 0;
+  }
+
   .H3{
     display: flex;
     justify-content: center;
@@ -87,7 +117,7 @@
   }
   
   body {
-    background: linear-gradient(-45deg, #bb5808, #bb5808, #FFD034, #EAB543);
+    background: linear-gradient(-45deg, #09add6, #dfdbd8, #1aa2c4, #dfdbd8);
     background-size: 400% 400%;
     animation: gradientAnimation 5s ease infinite;
   }
