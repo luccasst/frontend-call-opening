@@ -10,6 +10,24 @@ const CallPage = () => {
   const [priority, setPriority] = useState('');
   const { user, setUser } = useContext(CallContext);
   const [ calls, setCalls ] = useState([]);
+
+  const handleDelete = (callId) => {
+      const token = localStorage.getItem('token');
+
+      fetch(`http://192.168.0.39:3010/call/${callId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: token,
+        },
+      })
+      .then(response => response.json())
+    .then(data => {
+      console.log('Chamado excluído:', data);
+      setCalls(prevCalls => prevCalls.filter(call => call.id !== callId));
+    })
+    .catch(error => console.error('Erro ao excluir chamado:', error));
+};
   
 useEffect(() => {
   const token = localStorage.getItem('token');
@@ -115,8 +133,8 @@ useEffect(() => {
         <button type='submit'>Cadastrar chamado</button>
       </form>
 
-      <div className="getCalls">
-  <div className="column">
+    <div className="getCalls">
+      <div className="column">
     <h3>Título</h3>
     {calls.map(call => (
       <div key={call.id} className="callItem">
@@ -160,10 +178,15 @@ useEffect(() => {
       </div>
     ))}
   </div>
+  <div className="column">
+    <h3>Excluir</h3>
+    {calls.map(call => (
+      <div key={call.id} className="callItemButtom">
+        <button onClick={() => handleDelete(call.id)}>Excluir</button>
+      </div>
+    ))}
+  </div>
 </div>
-
-
-      
 
     </div>
   );
