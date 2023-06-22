@@ -8,7 +8,8 @@ const CallPage = () => {
   const [comment, setComment] = useState('');
   const [status, setStatus] = useState('');
   const [priority, setPriority] = useState('');
-  const { user, setUser } = useContext(CallContext);
+  const { user, setUser, name, setName } = useContext(CallContext);
+
   const [ calls, setCalls ] = useState([]);
 
   const handleDelete = (callId) => {
@@ -28,6 +29,12 @@ const CallPage = () => {
     })
     .catch(error => console.error('Erro ao excluir chamado:', error));
 };
+
+useEffect(() => {
+  const userData = JSON.parse(localStorage.getItem('user'));
+  setUser(userData);
+}, [setUser])
+
   
 useEffect(() => {
   const token = localStorage.getItem('token');
@@ -52,6 +59,7 @@ useEffect(() => {
       comment: comment,
       status: status,
       priority: priority,
+      user: name,
     };
 
     const token = localStorage.getItem('token');
@@ -72,6 +80,15 @@ useEffect(() => {
       .then((data) => {
         console.log('Chamado cadastrado:', data);
         console.log(newCall);
+        if (user) {
+          setCalls((prevCalls) => [
+            ...prevCalls,
+            { ...newCall, id: data.id, user: data.name },
+          ]);
+        } else {
+          console.log('Usuário não está definido.');
+        }
+
       })
       .catch((error) => {
         console.error('Erro ao cadastrar chamado', error.response);
@@ -85,7 +102,7 @@ useEffect(() => {
 
   return (
     <div>
-      <NavBar user={user.name} />
+      <NavBar user={user?.name} />
 
       <div className='H1'>
         <h1>BEM VINDO AO CALL OPENING</h1>
@@ -171,21 +188,21 @@ useEffect(() => {
   </div>
 
   <div className="column">
-    <h3>Email do usuário</h3>
-    {calls.map(call => (
-      <div key={call.id} className="callItem">
-        <p>{call.user.email}</p>
-      </div>
-    ))}
-  </div>
-  <div className="column">
-    <h3>Excluir</h3>
-    {calls.map(call => (
-      <div key={call.id} className="callItemButtom">
-        <button onClick={() => handleDelete(call.id)}>Excluir</button>
-      </div>
-    ))}
-  </div>
+  <h3>Usuário</h3>
+  {calls.map(call => (
+    <div key={call.id} className="callItem">
+      <p>{call && user?.name && user?.name.split(' ')[0]}</p>
+    </div>
+  ))}
+</div>
+<div className="column">
+  <h3>Excluir</h3>
+  {calls.map(call => (
+    <div key={call.id} className="callItemButtom">
+      <button onClick={() => handleDelete(call.id)}>Excluir</button>
+    </div>
+  ))}
+</div>
 </div>
 
     </div>

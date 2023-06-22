@@ -4,16 +4,21 @@ import {CallContext} from './context';
 
 function CallProvider({ children }) {
   const [user, setUser] = useState({});
+  const [name, setName] = useState({});
   const [calls, setCalls] = useState([]);
   const contextValue = useMemo(() => ({
     user,
     setUser,
     calls,
-    setCalls
+    setCalls,
+    name,
+    setName,
   }), [user,
     setUser,
     calls,
-    setCalls]);
+    setCalls,
+    name,
+    setName]);
 
   return (
     <CallContext.Provider value={contextValue}>
