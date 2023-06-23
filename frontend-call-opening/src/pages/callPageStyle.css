@@ -21,8 +21,10 @@
 .getCalls {
   display: flex;
   justify-content: center;
-  margin: 120px;
+  margin: 30px 50px;
 }
+
+
 
 .column {
   flex: 1;
@@ -35,10 +37,45 @@
   margin-right: 0;
 }
 
+button {
+  padding: 5.4px 10px;
+  font-size: 1rem;
+  background-color: #FF416C;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #FF4B2B;
+}
+.buttomUpdate button {
+  background-color: #27c067;
+  width: 90px;
+  height: 40px;
+  margin-top: -8px;
+}
+
+.buttomUpdate button:hover {
+  background-color: #088018;
+}
+
+.buttomUpdate {
+  margin-left: 10px;
+  padding: 20px 25px;
+  margin: 0px 20px;
+  flex-grow: 1; 
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease-in-out;
+  
+}
+
 .callItemButtom button {
-  padding: 15px 20px;
-  margin-top: -10px;
-  margin-bottom: -10px;
+  width: 90px;
+  height: 40px;
+  margin-top: -8px;
 }
 
 .callItemButtom {
@@ -151,20 +188,6 @@ input[type='text']:focus {
   border-color: #FF416C;
 }
 
-button {
-  padding: 5.4px 10px;
-  font-size: 1rem;
-  background-color: #FF416C;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-
-button:hover {
-  background-color: #FF4B2B;
-}
 
 @keyframes pulse {
   0% {

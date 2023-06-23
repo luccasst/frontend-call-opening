@@ -91,6 +91,7 @@ const CallPage = () => {
           console.log('Usuário não está definido.');
         }
         setShowSuccessMessage(true);
+       /*  alert('Chamado cadastrado com sucesso :)') */
       })
       .catch((error) => {
         console.error('Erro ao cadastrar chamado', error.response);
@@ -227,6 +228,14 @@ const CallPage = () => {
           {calls.map((call) => (
             <div key={call.id} className="callItemButtom">
               <button onClick={() => handleDelete(call.id)}>Excluir</button>
+            </div>
+          ))}
+        </div>
+        <div className="column">
+          <h3>Atualizar</h3>
+          {calls.map((call) => (
+            <div key={call.id} className="buttomUpdate">
+              <button onClick={() => handleDelete(call.id)}>Atualizar</button>
             </div>
           ))}
         </div>
