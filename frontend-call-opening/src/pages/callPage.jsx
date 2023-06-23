@@ -140,12 +140,17 @@ useEffect(() => {
         </div>
         <div className='formGroup'>
           <label htmlFor='priority'>Prioridade:</label>
-          <input
+          <select
             type='text'
             id='priority'
             value={priority}
             onChange={(e) => setPriority(e.target.value)}
-          />
+          >
+            <option value="">Selecione</option>
+            <option value="pequena">Pequena</option>
+            <option value="normal">Normal</option>
+            <option value="alta">Alta</option>
+          </select>
         </div>
         <button type='submit'>Cadastrar chamado</button>
       </form>

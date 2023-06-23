@@ -1,170 +1,184 @@
 .H1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 20vh;
-    background: linear-gradient(to right, #FF416C, #FF4B2B);
-    color: #fff;
-    max-width: 30%;
-    margin: 30px auto 0;
-    border-radius: 20px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    text-align: center;
-    padding: 20px;
-    animation: pulse 2s infinite;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  background: linear-gradient(to right, #FF416C, #FF4B2B);
+  color: #fff;
+  max-width: 30%;
+  margin: 30px auto 0;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  padding: 20px;
+  animation: pulse 2s infinite;
+}
 
-  
-  
-  .getCalls {
-    display: flex;
-    justify-content: center;
-    margin: 120px;
-  }
-  
-  .column {
-    flex: 1;
-    margin-right: -20px;
-    
-    justify-content: space-between;
-  }
-  
-  .column:last-child {
-    margin-right: 0;
-  }
 
-  .callItemButtom button {
-    padding: 15px 20px;
-    margin-top: -10px;
-    margin-bottom: -10px;
-  }
-  
-  .callItemButtom {
-    margin-left: 10px;
-    padding: 20px 25px;
-    margin: 0px 20px;
-    flex-grow: 1; 
-    margin-bottom: 10px;
-  }
-  
-  
-  .callItem {
-    background-color: #fff;
-    margin-left: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    flex-grow: 1;
-    margin-bottom: 10px;
-  }
-  
-  .callItem, h3 {
-    background-color: rgb(255, 255, 255);
-    margin-left: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    flex-grow: 1;
-    margin-bottom: 10px;
-  }
-  
-  .callItem h3,
-  .callItem p {
-    text-align: center;
-    margin: 0;
-    padding: 5px 0;
-  }
-  
 
-  .H3{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background: linear-gradient(to right, #FF416C, #FF4B2B);
-    max-width: 20%;
-    margin: 30px auto 0;
-    border-radius: 20px;
-  }
+.getCalls {
+  display: flex;
+  justify-content: center;
+  margin: 120px;
+}
 
-  .formContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    max-width: 500px;
-    margin: 20px auto;
-  }
+.column {
+  flex: 1;
+  margin-right: -20px;
   
-  .formGroup {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  
-  label {
-    font-size: 1.2rem;
-  }
-  
-  input[type='text'] {
-    padding: 10px;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    transition: border-color 0.3s ease-in-out;
-  }
-  
-  input[type='text']:focus {
-    outline: none;
-    border-color: #FF416C;
-  }
-  
-  button {
-    padding: 5.4px 10px;
-    font-size: 1rem;
-    background-color: #FF416C;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  button:hover {
-    background-color: #FF4B2B;
-  }
-  
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  
-  body {
-    background: linear-gradient(-45deg, #09add6, #dfdbd8, #1aa2c4, #dfdbd8);
-    background-size: 400% 400%;
-    animation: gradientAnimation 5s ease infinite;
-  }
-  
-  @keyframes gradientAnimation {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
+  justify-content: space-between;
+}
 
-  
-  
+.column:last-child {
+  margin-right: 0;
+}
+
+.callItemButtom button {
+  padding: 15px 20px;
+  margin-top: -10px;
+  margin-bottom: -10px;
+}
+
+.callItemButtom {
+  margin-left: 10px;
+  padding: 20px 25px;
+  margin: 0px 20px;
+  flex-grow: 1; 
+  margin-bottom: 10px;
+}
+
+
+.callItem {
+  background-color: #fff;
+  margin-left: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  flex-grow: 1;
+  margin-bottom: 10px;
+}
+
+.callItem, h3 {
+  background-color: rgb(255, 255, 255);
+  margin-left: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  flex-grow: 1;
+  margin-bottom: 10px;
+}
+
+.callItem h3,
+.callItem p {
+  text-align: center;
+  margin: 0;
+  padding: 5px 0;
+}
+
+
+.H3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(to right, #FF416C, #FF4B2B);
+  max-width: 20%;
+  margin: 30px auto 0;
+  border-radius: 20px;
+}
+
+.formContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+label {
+  font-size: 1.2rem;
+}
+
+select[type='text'] {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease-in-out;
+  width: 227px;
+}
+
+select[type='text']:focus {
+  outline: none;
+  border-color: #FF416C;
+}
+
+
+input[type='text'] {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease-in-out;
+}
+
+input[type='text']:focus {
+  outline: none;
+  border-color: #FF416C;
+}
+
+button {
+  padding: 5.4px 10px;
+  font-size: 1rem;
+  background-color: #FF416C;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #FF4B2B;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+body {
+  background: linear-gradient(-45deg, #09add6, #dfdbd8, #1aa2c4, #dfdbd8);
+  background-size: 400% 400%;
+  animation: gradientAnimation 5s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
