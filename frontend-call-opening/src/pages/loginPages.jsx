@@ -22,9 +22,10 @@ function LoginPage() {
     const response = await fetch(url, options);
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
         const token = data.token;
+        const user = data.user;
         localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
         navigate('/call');
 
       

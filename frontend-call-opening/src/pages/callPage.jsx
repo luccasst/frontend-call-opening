@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import NavBar from '../components/navBar';
 import { CallContext } from '../context/context';
+import UpdateOverlay from '../components/updateCallPage'; 
 import './callPageStyle.css';
 
-const CallPage = () => {
+const CallPage = ({ onUpdate, onClose }) => {
   const [title, setTitle] = useState('');
   const [comment, setComment] = useState('');
   const [status, setStatus] = useState('');
@@ -13,7 +14,15 @@ const CallPage = () => {
   const [calls, setCalls] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showUpdateOverlay, setShowUpdateOverlay] = useState(false);
+  const [selectedCallId, setSelectedCallId] = useState(null);
 
+  const [updatedTitle, setUpdatedTitle] = useState('');
+  const [updatedComment, setUpdatedComment] = useState('');
+  const [updateStatus, setUpdateStatus] = useState('');
+  const [updatePriority, setUpdatePriority] = useState('');
+
+  
   const handleDelete = (callId) => {
     const token = localStorage.getItem('token');
 
@@ -91,7 +100,6 @@ const CallPage = () => {
           console.log('Usuário não está definido.');
         }
         setShowSuccessMessage(true);
-       /*  alert('Chamado cadastrado com sucesso :)') */
       })
       .catch((error) => {
         console.error('Erro ao cadastrar chamado', error.response);
@@ -113,15 +121,48 @@ const CallPage = () => {
     }
   }, [showSuccessMessage]);
 
+  const handleUpdate = (callId) => {
+    setShowUpdateOverlay(true);
+
+    const updatedCall = {
+      title: updatedTitle,
+      comment: updatedComment,
+      status: updateStatus,
+      priority: updatePriority,
+    };
+
+    const token = localStorage.getItem('token');
+
+    fetch(`http://192.168.0.39:3010/call/${callId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+      },
+      body: JSON.stringify(updatedCall),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Chamado atualizado:', data);
+        onUpdate(data);
+        onClose();
+      })
+      .catch((error) => {
+        console.error('Erro ao atualizar chamado:', error);
+      })
+
+  };
+  
+
   return (
     <div>
       <NavBar user={user?.name} />
       <div className="loadingContainer">
-      {isLoading && <div className="loading">Carregando...</div>}
-      {showSuccessMessage && (
-        <div className="successMessage">Chamado cadastrado com sucesso!</div>
-      )}
-    </div>
+        {isLoading && <div className="loading">Carregando...</div>}
+        {showSuccessMessage && (
+          <div className="successMessage">Chamado cadastrado com sucesso!</div>
+        )}
+      </div>
       <div className="H1">
         <h1>BEM VINDO AO CALL OPENING</h1>
       </div>
@@ -154,8 +195,8 @@ const CallPage = () => {
             id="status"
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            >
-              <option value="">Selecione</option>
+          >
+            <option value="">Selecione</option>
             <option value="início">Início</option>
             <option value="tratamento">Tratamento</option>
             <option value="concluído">Concluído</option>
@@ -235,11 +276,18 @@ const CallPage = () => {
           <h3>Atualizar</h3>
           {calls.map((call) => (
             <div key={call.id} className="buttomUpdate">
-              <button onClick={() => handleDelete(call.id)}>Atualizar</button>
+              <button onClick={() => handleUpdate(call.id)}>Atualizar</button>
             </div>
           ))}
         </div>
       </div>
+      {showUpdateOverlay && (
+  <div className="overlay">
+    <UpdateOverlay onClose={() => setShowUpdateOverlay(false)} onUpdate={handleUpdate} />
+  </div>
+)}
+
+
     </div>
   );
 };
