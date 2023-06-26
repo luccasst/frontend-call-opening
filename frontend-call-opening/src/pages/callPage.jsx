@@ -290,7 +290,7 @@ const handleCancelEdit = (callId) => {
     {calls.map((call) => (
       <div key={call.id} className="callItem">
         {editableCall[call.id] ? (
-          <input
+          <select
             type="text"
             value={editableCall[call.id].status}
             onChange={(e) =>
@@ -302,7 +302,12 @@ const handleCancelEdit = (callId) => {
                 },
               }))
             }
-          />
+          >
+              <option value="">Selecione</option>
+            <option value="início">Início</option>
+            <option value="tratamento">Tratamento</option>
+            <option value="concluído">Concluído</option>
+          </select>
         ) : (
           <p>{call.status}</p>
         )}
@@ -315,7 +320,7 @@ const handleCancelEdit = (callId) => {
     {calls.map((call) => (
       <div key={call.id} className="callItem">
         {editableCall[call.id] ? (
-          <input
+          <select
             type="text"
             value={editableCall[call.id].priority}
             onChange={(e) =>
@@ -327,7 +332,12 @@ const handleCancelEdit = (callId) => {
                 },
               }))
             }
-          />
+          >
+            <option value="">Selecione</option>
+            <option value="pequena">Pequena</option>
+            <option value="normal">Normal</option>
+            <option value="alta">Alta</option>
+          </select>
         ) : (
           <p>{call.priority}</p>
         )}
