@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import NavBar from '../components/navBar';
 import { CallContext } from '../context/context';
-import UpdateOverlay from '../components/updateCallPage'; 
 import './callPageStyle.css';
 
-const CallPage = ({ onUpdate, onClose }) => {
+const CallPage = () => {
   const [title, setTitle] = useState('');
   const [comment, setComment] = useState('');
   const [status, setStatus] = useState('');
@@ -14,19 +13,29 @@ const CallPage = ({ onUpdate, onClose }) => {
   const [calls, setCalls] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [showUpdateOverlay, setShowUpdateOverlay] = useState(false);
-  const [selectedCallId, setSelectedCallId] = useState(null);
+  const [editableCall, setEditableCall] = useState({});
 
-  const [updatedTitle, setUpdatedTitle] = useState('');
-  const [updatedComment, setUpdatedComment] = useState('');
-  const [updateStatus, setUpdateStatus] = useState('');
-  const [updatePriority, setUpdatePriority] = useState('');
+const handleEdit = (call) => {
+  setEditableCall((prevEditableCalls) => ({
+    ...prevEditableCalls,
+    [call.id]: { ...call },
+  }));
+};
+
+const handleCancelEdit = (callId) => {
+  setEditableCall((prevEditableCalls) => {
+    const updatedEditableCalls = { ...prevEditableCalls };
+    delete updatedEditableCalls[callId];
+    return updatedEditableCalls;
+  });
+};
+ 
 
   
   const handleDelete = (callId) => {
     const token = localStorage.getItem('token');
 
-    fetch(`http://192.168.0.39:3010/call/${callId}`, {
+    fetch(`http://localhost:3010/call/${callId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -48,7 +57,7 @@ const CallPage = ({ onUpdate, onClose }) => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    fetch('http://192.168.0.39:3010/call', {
+    fetch('http://localhost:3010/call', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -76,7 +85,7 @@ const CallPage = ({ onUpdate, onClose }) => {
 
     setIsLoading(true);
 
-    fetch('http://192.168.0.39:3010/call', {
+    fetch('http://localhost:3010/call', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -114,27 +123,13 @@ const CallPage = ({ onUpdate, onClose }) => {
     setPriority('');
   };
 
-  useEffect(() => {
-    if (showSuccessMessage) {
-      setShowSuccessMessage(false);
-      window.location.reload();
-    }
-  }, [showSuccessMessage]);
-
   const handleUpdate = (callId) => {
-    setShowUpdateOverlay(true);
-
-    const updatedCall = {
-      title: updatedTitle,
-      comment: updatedComment,
-      status: updateStatus,
-      priority: updatePriority,
-    };
-
+    const updatedCall = editableCall[callId];
+  
     const token = localStorage.getItem('token');
-
-    fetch(`http://192.168.0.39:3010/call/${callId}`, {
-      method: 'PUT',
+  
+    fetch(`http://localhost:3010/call/${callId}`, {
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         Authorization: token,
@@ -144,14 +139,35 @@ const CallPage = ({ onUpdate, onClose }) => {
       .then((response) => response.json())
       .then((data) => {
         console.log('Chamado atualizado:', data);
-        onUpdate(data);
-        onClose();
+        setCalls((prevCalls) => {
+          const updatedCalls = prevCalls.map((call) => {
+            if (call.id === callId) {
+              return {
+                ...call,
+                title: updatedCall.title,
+                comment: updatedCall.comment,
+                status: updatedCall.status,
+                priority: updatedCall.priority,
+              };
+            }
+            return call;
+          });
+          return updatedCalls;
+        });
+        handleCancelEdit(callId);
       })
-      .catch((error) => {
-        console.error('Erro ao atualizar chamado:', error);
-      })
-
+      .catch((error) => console.error('Erro ao atualizar chamado:', error));
   };
+  
+  
+  
+
+  useEffect(() => {
+    if (showSuccessMessage) {
+      setShowSuccessMessage(false);
+      window.location.reload();
+    }
+  }, [showSuccessMessage]);
   
 
   return (
@@ -220,41 +236,104 @@ const CallPage = ({ onUpdate, onClose }) => {
       </form>
 
       <div className="getCalls">
-        <div className="column">
-          <h3>Título</h3>
-          {calls.map((call) => (
-            <div key={call.id} className="callItem">
-              <p>{call.title}</p>
-            </div>
-          ))}
-        </div>
+      <div className="column">
+    <h3>Título</h3>
+    {calls.map((call) => (
+      <div key={call.id} className="callItem">
+        {editableCall[call.id] ? (
+          <input
+            type="text"
+            value={editableCall[call.id].title}
+            onChange={(e) =>
+              setEditableCall((prevEditableCalls) => ({
+                ...prevEditableCalls,
+                [call.id]: {
+                  ...prevEditableCalls[call.id],
+                  title: e.target.value,
+                },
+              }))
+            }
+          />
+        ) : (
+          <p>{call.title}</p>
+        )}
+      </div>
+    ))}
+  </div>
+  <div className="column">
+    <h3>Comentáro</h3>
+    {calls.map((call) => (
+      <div key={call.id} className="callItem">
+        {editableCall[call.id] ? (
+          <input
+            type="text"
+            value={editableCall[call.id].comment}
+            onChange={(e) =>
+              setEditableCall((prevEditableCalls) => ({
+                ...prevEditableCalls,
+                [call.id]: {
+                  ...prevEditableCalls[call.id],
+                  comment: e.target.value,
+                },
+              }))
+            }
+          />
+        ) : (
+          <p>{call.comment}</p>
+        )}
+      </div>
+    ))}
+  </div>
 
-        <div className="column">
-          <h3>Comentário</h3>
-          {calls.map((call) => (
-            <div key={call.id} className="callItem">
-              <p>{call.comment}</p>
-            </div>
-          ))}
-        </div>
+  <div className="column">
+    <h3>Status</h3>
+    {calls.map((call) => (
+      <div key={call.id} className="callItem">
+        {editableCall[call.id] ? (
+          <input
+            type="text"
+            value={editableCall[call.id].status}
+            onChange={(e) =>
+              setEditableCall((prevEditableCalls) => ({
+                ...prevEditableCalls,
+                [call.id]: {
+                  ...prevEditableCalls[call.id],
+                  status: e.target.value,
+                },
+              }))
+            }
+          />
+        ) : (
+          <p>{call.status}</p>
+        )}
+      </div>
+    ))}
+  </div>
 
-        <div className="column">
-          <h3>Status</h3>
-          {calls.map((call) => (
-            <div key={call.id} className="callItem">
-              <p>{call.status}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="column">
-          <h3>Prioridade</h3>
-          {calls.map((call) => (
-            <div key={call.id} className="callItem">
-              <p>{call.priority}</p>
-            </div>
-          ))}
-        </div>
+  <div className="column">
+    <h3>Prioridade</h3>
+    {calls.map((call) => (
+      <div key={call.id} className="callItem">
+        {editableCall[call.id] ? (
+          <input
+            type="text"
+            value={editableCall[call.id].priority}
+            onChange={(e) =>
+              setEditableCall((prevEditableCalls) => ({
+                ...prevEditableCalls,
+                [call.id]: {
+                  ...prevEditableCalls[call.id],
+                  priority: e.target.value,
+                },
+              }))
+            }
+          />
+        ) : (
+          <p>{call.priority}</p>
+        )}
+      </div>
+    ))}
+  </div>
 
         <div className="column">
           <h3>Usuário</h3>
@@ -273,22 +352,25 @@ const CallPage = ({ onUpdate, onClose }) => {
           ))}
         </div>
         <div className="column">
-          <h3>Atualizar</h3>
-          {calls.map((call) => (
-            <div key={call.id} className="buttomUpdate">
-              <button onClick={() => handleUpdate(call.id)}>Atualizar</button>
-            </div>
-          ))}
-        </div>
+    <h3>Atualizar</h3>
+    {calls.map((call) => (
+      <div key={call.id} className="callItemButtom">
+        {editableCall[call.id] ? (
+          <div className="buttonGroup">
+            <button onClick={() => handleUpdate(call.id)}>Salvar</button>
+            <button onClick={() => handleCancelEdit(call.id)}>Cancelar</button>
+          </div>
+        ) : (
+          <button onClick={() => handleEdit(call)}>Editar</button>
+        )}
       </div>
-      {showUpdateOverlay && (
-  <div className="overlay">
-    <UpdateOverlay onClose={() => setShowUpdateOverlay(false)} onUpdate={handleUpdate} />
+    ))}
   </div>
-)}
 
+      </div>
+     
 
-    </div>
+  </div>
   );
 };
 

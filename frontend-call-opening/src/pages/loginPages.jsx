@@ -18,7 +18,7 @@ function LoginPage() {
         'Content-Type': 'application/json',
       },
     };
-    const url = 'http://192.168.0.39:3010/auth/login';
+    const url = 'http://localhost:3010/auth/login';
     const response = await fetch(url, options);
     if (response.ok) {
       const data = await response.json();
