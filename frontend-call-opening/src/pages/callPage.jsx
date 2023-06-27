@@ -183,7 +183,7 @@ const handleCancelEdit = (callId) => {
         <h1>BEM VINDO AO CALL OPENING</h1>
       </div>
       <div className="H3">
-        <h3>Abra seu chamado :)</h3>
+        <h2>Abra seu chamado :)</h2>
       </div>
       <form onSubmit={handleSubmit} className="formContainer">
         <div className="formGroup">
@@ -232,7 +232,9 @@ const handleCancelEdit = (callId) => {
             <option value="alta">Alta</option>
           </select>
         </div>
+        <div className="buttonCreate">
         <button type="submit">Cadastrar chamado</button>
+        </div>
       </form>
 
       <div className="getCalls">
@@ -364,7 +366,7 @@ const handleCancelEdit = (callId) => {
         <div className="column">
     <h3>Atualizar</h3>
     {calls.map((call) => (
-      <div key={call.id} className="callItemButtom">
+      <div key={call.id} className="buttomUpdate">
         {editableCall[call.id] ? (
           <div className="buttonGroup">
             <button onClick={() => handleUpdate(call.id)}>Salvar</button>

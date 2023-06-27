@@ -12,7 +12,9 @@ function NavBar() {
 
   return (
     <nav className="navegation-body">
-      <button className="chamados">MEUS CHAMADOS</button>
+      <div className="chamados">
+          <button>sair</button>
+      </div>
       <h3 className="user">
         Seja bem-vindo, {user && user.name && user.name.split(' ')[0]}
         <span role="img" aria-label="Emoji Feliz">

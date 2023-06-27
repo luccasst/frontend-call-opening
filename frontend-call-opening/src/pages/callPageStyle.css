@@ -3,8 +3,8 @@
   justify-content: center;
   align-items: center;
   height: 20vh;
-  background: linear-gradient(to right, #FF416C, #FF4B2B);
-  color: #fff;
+  background: linear-gradient(to right, #5d92f3, #48BEFF);
+  color: rgb(0, 0, 0);
   max-width: 30%;
   margin: 30px auto 0;
   border-radius: 20px;
@@ -21,7 +21,7 @@
 .getCalls {
   display: flex;
   justify-content: center;
-  margin: 30px 50px;
+  margin: 30px 45px;
 }
 
 
@@ -37,10 +37,25 @@
   margin-right: 0;
 }
 
+.buttonCreate button{
+  padding: 5.4px 10px;
+  font-size: 1rem;
+  background: #48BEFF;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.buttonCreate button:hover {
+  background-color: #28a2e4;
+}
+
 button {
   padding: 5.4px 10px;
   font-size: 1rem;
-  background-color: #FF416C;
+  background-color: #e22525;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -49,7 +64,7 @@ button {
 }
 
 button:hover {
-  background-color: #FF4B2B;
+  background-color: #b41414;
 }
 .buttomUpdate button {
   background-color: #27c067;
@@ -67,7 +82,7 @@ button:hover {
   padding: 20px 25px;
   margin: 0px 20px;
   flex-grow: 1; 
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   transition: background-color 0.3s ease-in-out;
   
 }
@@ -77,6 +92,7 @@ button:hover {
   height: 40px;
   margin-top: -8px;
 }
+
 
 .callItemButtom {
   margin-left: 10px;
@@ -99,7 +115,7 @@ button:hover {
 
 .callItem, h3 {
   background-color: rgb(255, 255, 255);
-  margin-left: 20px;
+  margin-left: 22px;
   border-radius: 5px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   padding: 20px;
@@ -130,7 +146,8 @@ button {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background: linear-gradient(to right, #FF416C, #FF4B2B);
+  background: linear-gradient(to right, #5d92f3, #48BEFF);
+  color: rgb(0, 0, 0);
   max-width: 20%;
   margin: 30px auto 0;
   border-radius: 20px;
@@ -157,7 +174,7 @@ label {
 
 select option {
   background-color: #f2f2f2;
-  color: #FF416C;
+  color: #065a88;
 }
 
 select option:hover {
@@ -165,7 +182,7 @@ select option:hover {
 }
 
 select option:selected {
-  background-color: #FF416C;
+  background-color: #48BEFF;
   color: #fff;
 }
 
@@ -181,7 +198,7 @@ select[type='text'] {
 
 select[type='text']:focus {
   outline: none;
-  border-color: #FF416C;
+  border-color: #48BEFF;
 }
 
 
@@ -195,7 +212,7 @@ input[type='text'] {
 
 input[type='text']:focus {
   outline: none;
-  border-color: #FF416C;
+  border-color: #48BEFF;
 }
 
 
@@ -212,9 +229,9 @@ input[type='text']:focus {
 }
 
 body {
-  background: linear-gradient(-45deg, #09add6, #dfdbd8, #1aa2c4, #dfdbd8);
+  background: linear-gradient(-45deg, #99a0a8, #A7A2A9, #575A5E, #ffffff);
   background-size: 400% 400%;
-  animation: gradientAnimation 5s ease infinite;
+  animation: gradientAnimation 10s ease infinite;
 }
 
 @keyframes gradientAnimation {

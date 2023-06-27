@@ -3,8 +3,8 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(45deg, #e46a06, #c5c50f);
   }
+  
   
   .login-page-body {
     width: 400px;
