@@ -47,10 +47,10 @@ Podendo conseguir realizar a abertura de chamados com esses campos:
 
 <table>
   <tr>
-    <td>Nodejs</td>
-    <td>TypeScript</td>
-    <td>Postgres</td>
-    <td>TypeORM</td>
+    <td>React js</td>
+    <td>Html</td>
+    <td>Css</td>
+    <td>Context API</td>
   </tr>
 </table>
 
