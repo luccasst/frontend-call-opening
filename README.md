@@ -1,26 +1,17 @@
 # Boas vindas ao repositório do projeto!
 
 
-### É uma aplicação feita por mim, onde realizo um CRUD para realizar autenticação de usuário e realização de abertura de chamados.
+### É uma aplicação feita por mim, onde é possível cadastrar, listar, deletar e atualizar um chamado.
 ### Nela, conseguimos efetuar cadastro de usuários e chamados, login do usuário com autenticação do token JWT, atualizar e deletar.
 ### Utilizei a biblioteca bcrypt para a realização de criptografia das senhas criadas pelos usuários.
 
 ## Funcionamento da aplicação
 ⚠ **Atenção:** ⚠
-Para rodar a aplicação é necessário realizar a configuração do `TYPEORM` e definir as variáveis de ambiente no arquivo `.env`, na raiz do projeto.
-Logo em seguida executar um dos comandos abaixo em ordem.
+Para rodar a aplicação é necessário instalar as dependências antes.
 
 Para instalar as dependências:
 ```sh
 npm install
-```
-Para baixar a imagem do banco via Docker:
-```sh
-npm run docker:up
-```
-Para rodar as migrations e conectar com o banco:
-```sh
-npm run db:init
 ```
 Para rodar a aplicação:
 ```sh
