@@ -5,6 +5,14 @@ import { useNavigate } from 'react-router-dom';
 function NavBar() {
   const [user, setUser] = useState({});
 
+  const navigate = useNavigate();
+
+
+  function handleLogout() {
+    localStorage.removeItem('user');
+    navigate('/login');
+  }
+
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('user'));
     setUser(userData);
@@ -13,7 +21,7 @@ function NavBar() {
   return (
     <nav className="navegation-body">
       <div className="chamados">
-          <button>sair</button>
+          <button onClick={handleLogout}>sair</button>
       </div>
       <h3 className="user">
         Seja bem-vindo, {user && user.name && user.name.split(' ')[0]}
