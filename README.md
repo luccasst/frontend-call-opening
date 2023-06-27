@@ -1,7 +1,7 @@
 # Boas vindas ao repositório do projeto!
 
 
-### É uma aplicação feita por mim, onde é possível cadastrar, listar, deletar e atualizar um chamado.
+### É uma aplicação feita por mim, onde é possível cadastrar, listar, deletar e atualizar um chamado. Feito na linguagem JavaScript, utilizando o framework ReactJS e com a funcionalidade que permite o controle e compartilhamento de estado, Context API. 
 ### Nela, conseguimos efetuar cadastro de usuários e chamados, login do usuário com autenticação do token JWT, atualizar e deletar.
 ### Utilizei a biblioteca bcrypt para a realização de criptografia das senhas criadas pelos usuários.
 
@@ -41,6 +41,10 @@ Podendo conseguir realizar a abertura de chamados com esses campos:
 + priority
 + createdAt
 + updatedAt
+
+ ## Porta utilizada
+
+ - Porta do Frontend: `3000`;
 
 
 ## Tecnologia usadas:
