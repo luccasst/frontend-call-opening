@@ -42,6 +42,18 @@ Podendo conseguir realizar a abertura de chamados com esses campos:
 + createdAt
 + updatedAt
 
+##Segue abaixo algumas imagens da aplicação
+
+![WhatsApp Image 2023-06-27 at 15 14 06](https://github.com/luccasst/frontend-call-opening/assets/94481606/64244747-1782-4dd9-a667-9fa19fd44afe)
+
+![WhatsApp Image 2023-06-27 at 15 13 40](https://github.com/luccasst/frontend-call-opening/assets/94481606/b113c4f7-2b9c-4359-be74-1e9bfb48c2a6)
+
+![WhatsApp Image 2023-06-27 at 15 13 19](https://github.com/luccasst/frontend-call-opening/assets/94481606/4437c1e6-3620-4c87-b291-8db32284c670)
+
+![WhatsApp Image 2023-06-27 at 15 09 23](https://github.com/luccasst/frontend-call-opening/assets/94481606/fc0ce77f-a835-435e-bb26-7eb99ff108f0)
+
+
+
  ## Porta utilizada
 
  - Porta do Frontend: `3000`;
