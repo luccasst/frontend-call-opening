@@ -42,7 +42,7 @@ Podendo conseguir realizar a abertura de chamados com esses campos:
 + createdAt
 + updatedAt
 
-##Segue abaixo algumas imagens da aplicação
+## Segue abaixo algumas imagens da aplicação
 
 ![WhatsApp Image 2023-06-27 at 15 14 06](https://github.com/luccasst/frontend-call-opening/assets/94481606/64244747-1782-4dd9-a667-9fa19fd44afe)
 
